@@ -5,7 +5,6 @@ Summary:	Directs a program's sound output to aRts or esd
 Source0:	%{name}-%{version}.tar.bz2
 License:	LGPL
 Group:		System/Base
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Prefix:		%{_prefix}
 BuildRequires:	libarts-devel 
 BuildRequires: esound-devel
