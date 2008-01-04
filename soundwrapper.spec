@@ -1,8 +1,10 @@
 Name: soundwrapper
 Version:	1.5
-Release:	%mkrel 3
+Release:	%mkrel 4
 Summary:	Directs a program's sound output to aRts or esd
 Source0:	%{name}-%{version}.tar.bz2
+# (fc) 1.5-4mdv add support for pulseaudio
+Patch0:		soundwrapper-1.5-pulse.patch
 License:	LGPL
 Group:		System/Base
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -18,6 +20,7 @@ servers if either of them is in control of the sound device
 
 %prep
 %setup -q
+%patch0 -p1 -b .pulseaudio
 
 aclocal
 automake --add-missing
