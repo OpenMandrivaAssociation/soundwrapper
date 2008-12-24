@@ -11,7 +11,7 @@ License:	LGPL
 Group:		System/Base
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 URL:            http://cvs.mandriva.com/cgi-bin/cvsweb.cgi/SPECS/%{name}/
-BuildRequires:	libpulseaudio-devel libalsa-devel libarts-devel esound-devel
+BuildRequires:	libpulseaudio-devel libalsa-devel libarts-devel esound-devel kde3-macros
 Conflicts:  menu < 2.1.12-9mdk
 
 %description
