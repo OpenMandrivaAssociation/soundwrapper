@@ -28,15 +28,16 @@ automake --add-missing
 autoconf
 
 %build
+export CFLAGS="%{optflags} -I%{_kde3_includedir}"
 %configure
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
