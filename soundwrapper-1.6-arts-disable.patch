@@ -1,0 +1,48 @@
+--- soundwrapper.c.orig	2009-02-09 16:49:53.000000000 -0200
++++ soundwrapper.c	2009-02-09 16:50:34.000000000 -0200
+@@ -1,5 +1,4 @@
+ #include <unistd.h>
+-#include <artsc/artsc.h>
+ #include <esd.h>
+ #include <pulse/simple.h>
+ #include <alsa/asoundlib.h>
+@@ -25,13 +24,6 @@
+   esd_standby_mode_t (*_esd_get_standby_mode)(int) = NULL;
+   int (*_esd_close)(int) = NULL;
+ 
+-  void *libartsc = NULL;
+-  int (*_arts_init)() = NULL;
+-#ifdef HAVE_ARTS_SUSPENDED
+-  int (*_arts_suspended)() = NULL;
+-#endif
+-  void (*_arts_free)() = NULL;
+-
+   void *libasound = NULL;
+   int (*_snd_pcm_open)(snd_pcm_t **, const char *, snd_pcm_stream_t, int) = NULL;
+   int (*_snd_pcm_close)(snd_pcm_t *) = NULL;
+@@ -60,25 +52,6 @@
+       if(execvp("aoss",argv) == 0)
+ 	return 0;}}
+ 
+-  libartsc=dlopen("libartsc.so.0", RTLD_LAZY);
+-  if (libartsc){
+-    _arts_init=dlsym(libartsc, "arts_init");
+-#ifdef HAVE_ARTS_SUSPENDED
+-    _arts_suspended=dlsym(libartsc, "arts_suspended");
+-#endif
+-    _arts_free=dlsym(libartsc, "arts_free");
+-
+-#ifdef HAVE_ARTS_SUSPENDED
+-    if (_arts_init() == 0 && _arts_suspended() == 0){
+-#else
+-    if (_arts_init() == 0){
+-#endif
+-      _arts_free();
+-      dlclose(libartsc);
+-      argv[0] = "artsdsp";
+-      if(execvp("artsdsp",argv) == 0)
+-	return 0;}}
+-
+   libesd=dlopen("libesd.so.0", RTLD_LAZY);
+   if (libesd){
+     _esd_open_sound=dlsym(libesd, "esd_open_sound");
