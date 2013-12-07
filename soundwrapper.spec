@@ -1,6 +1,6 @@
 %define name soundwrapper
 %define version 1.6
-%define release 11
+%define release 12
 
 Summary:	Directs a program's sound output to Pulse, ALSA, aRts, or esd
 Name:		%{name}
