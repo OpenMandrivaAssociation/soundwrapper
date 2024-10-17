@@ -12,7 +12,7 @@ Patch1:	soundwrapper-1.6-esd-disable.patch
 License:	LGPL
 Group:		System/Base
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-URL:            http://cvs.mandriva.com/cgi-bin/cvsweb.cgi/SPECS/%{name}/
+URL:            https://cvs.mandriva.com/cgi-bin/cvsweb.cgi/SPECS/%{name}/
 BuildRequires: pkgconfig(libpulse)
 BuildRequires: alsa-oss-devel
 BuildRequires: pkgconfig(alsa)
